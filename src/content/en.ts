@@ -30,7 +30,6 @@ export const site = {
     lede: "Exteriors, interiors and drone coverage of the whole property in a single visit.",
     delivery: "Edited photos in 2 working days",
     cta: "Start a project",
-    scroll: "Selected work",
     frame: {
       src: "/photos/aerial/solo-stock.jpg",
       ratio: "16/9",
@@ -42,7 +41,7 @@ export const site = {
     index: "01",
     label: "Selected work",
     title: "Properties, shot end to end.",
-    note: "Whole object, single visit.",
+    note: "Full coverage, one visit.",
   },
 
   aerial: {
@@ -55,7 +54,8 @@ export const site = {
       poster: "/video/aerial-reel-poster.jpg",
       ratio: "16/9",
       caption: "Drone reel — commercial properties across Tallinn",
-      meta: "Restate · 2023 · 0:48",
+      /* No year: the only date on the file is its render date, not the shoot. */
+      meta: "Restate · 0:48",
     },
     frames: [
       {
@@ -112,7 +112,7 @@ export const site = {
     title: "One photographer, the whole property.",
     body: [
       "I photograph commercial property in Tallinn and across Estonia — business parks, warehouses, offices and retail space.",
-      "The aerial work here was shot for Restate: their developments across Tallinn, covered from the air on the same visit as the ground work.",
+      "The aerial work here was shot for Restate — their commercial developments across Tallinn.",
       "I fly the drone myself, so the ground and aerial coverage come from one shoot — no second crew, no second booking.",
     ],
     signature: "Dmitri Gubin",
