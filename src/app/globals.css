@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm paper base — makes property photography read richer than pure white. */
+  --color-paper: #fbfaf8;
+  --color-paper-sunk: #f4f2ee;
+  --color-ink: #12110f;
+  --color-ink-soft: #6b6862;
+  --color-ink-faint: #a39e95;
+  --color-line: #e6e2db;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Page gutter shared by the content column and the vertical rules behind it. */
+  --spacing-gutter: 1.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Nav is fixed; keep anchor targets clear of it. */
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  /* Tight optical tracking for the large display headings. */
+  .text-display {
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+
+  .text-label {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /*
+   * Scroll-driven reveal. Progressive enhancement: browsers without
+   * animation-timeline simply render the content in its final state.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+    }
+  }
+
+  @keyframes reveal-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* One-shot staggered entrance for the hero, which is above the fold. */
+  @media (prefers-reduced-motion: no-preference) {
+    .rise {
+      opacity: 0;
+      animation: rise-in 0.9s cubic-bezier(0.2, 0.7, 0.25, 1) forwards;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
