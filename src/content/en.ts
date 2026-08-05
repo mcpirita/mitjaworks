@@ -119,7 +119,8 @@ export const site = {
     role: "Photographer",
     portrait: {
       src: "/photos/portrait/dmitri-gubin.jpg",
-      ratio: "4/5",
+      /* The frame's own ratio — this one is shown uncropped. */
+      ratio: "2/3",
       caption: "Dmitri Gubin",
     },
   },
