@@ -54,8 +54,8 @@ export const site = {
       poster: "/video/aerial-reel-poster.jpg",
       ratio: "16/9",
       caption: "Drone reel — commercial properties across Tallinn",
-      /* No year: the only date on the file is its render date, not the shoot. */
-      meta: "Restate · 0:48",
+      /* Year confirmed by Dmitri; the file itself only carries a render date. */
+      meta: "Restate · 2023 · 0:48",
     },
     frames: [
       {
