@@ -130,7 +130,7 @@ export const site = {
     label: "Contact",
     title: "Have a property to shoot?",
     lede: "Send the address and the date. I will confirm availability the same day.",
-    email: "gubi.dima@gmail.com",
+    email: "hi@mitjaworks.com",
     phoneLabel: "WhatsApp",
     phone: "+372 5624 9209",
     phoneHref: "https://wa.me/37256249209",
