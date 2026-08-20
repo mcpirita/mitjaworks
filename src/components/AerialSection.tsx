@@ -1,5 +1,5 @@
 import { site } from "@/content/en";
-import { PhotoPlate, VideoPlate, widthCap } from "./PhotoPlate";
+import { PhotoPlate, VideoPlate } from "./PhotoPlate";
 import { Shell } from "./Shell";
 
 /**
@@ -17,7 +17,7 @@ export function AerialSection() {
       <Shell>
         <div className="flex items-center gap-3 text-label text-paper/60">
           <span>{site.aerial.index}</span>
-          <span className="h-px w-8 bg-paper/20" />
+          <span className="rule-draw h-px w-8 bg-paper/20" />
           <span>{site.aerial.label}</span>
         </div>
 
@@ -40,10 +40,7 @@ export function AerialSection() {
             } as React.CSSProperties
           }
         >
-          <div
-            className="reveal mx-auto mt-12 md:mt-16"
-            style={{ width: widthCap(reel.ratio) }}
-          >
+          <div className="reveal-frame mt-12 md:mt-16">
             <VideoPlate
               src={reel.src}
               poster={reel.poster}
@@ -53,27 +50,20 @@ export function AerialSection() {
             />
           </div>
 
-          <div
-            className="reveal mx-auto mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2"
-            style={{ width: widthCap(reel.ratio) }}
-          >
+          <div className="plate-row mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {frames.map((frame) => (
               <PhotoPlate
                 key={frame.src}
                 src={frame.src}
                 ratio={frame.ratio}
                 caption={frame.caption}
+                className="reveal-frame"
                 sizes="(min-width: 640px) 50vw, 100vw"
               />
             ))}
           </div>
 
-          <p
-            className="mx-auto mt-6 text-label text-ink-faint"
-            style={{ width: widthCap(reel.ratio) }}
-          >
-            {credit}
-          </p>
+          <p className="mt-6 text-label text-ink-faint">{credit}</p>
         </div>
       </Shell>
     </section>

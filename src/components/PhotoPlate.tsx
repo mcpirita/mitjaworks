@@ -1,26 +1,6 @@
 import Image from "next/image";
 import { blurData } from "@/content/blurData";
 
-/**
- * Plate width capped by viewport height as well as by column width.
- *
- * Width alone used to decide the height: a 3:2 plate in the 1344px column of a
- * 1440px laptop came out 896px tall — taller than the 900px screen — so the
- * frame was cut by the fold on open. The cap is applied to width rather than as
- * a max-height because max-height on a definite-width box overrides
- * aspect-ratio: the box would grow wider than the frame and object-cover would
- * crop the photograph itself. Capping width keeps the ratio exact, so the
- * photograph is never cropped — the plate just gets smaller and centres.
- *
- * min(100%, …) means the cap only binds on wide-but-short screens. Phones and
- * tall monitors are unaffected.
- */
-export function widthCap(ratio: string) {
-  const [w, h] = ratio.split("/").map(Number);
-  if (!w || !h) return undefined;
-  return `min(100%, calc(var(--plate-max-h) * ${(w / h).toFixed(4)}))`;
-}
-
 type PhotoPlateProps = {
   /** CSS aspect ratio, e.g. "16/9". */
   ratio: string;
@@ -40,13 +20,6 @@ type PhotoPlateProps = {
   sizes?: string;
   /** Set on the first meaningful image so it is not lazy-loaded. */
   priority?: boolean;
-  /**
-   * Opt out of the viewport-height ceiling and fill the column instead. For
-   * plates whose width is already set by the layout around them — the hero,
-   * which aligns to the headline and the button, and the portrait, which is
-   * sized by its grid column.
-   */
-  uncapped?: boolean;
   className?: string;
 };
 
@@ -59,17 +32,12 @@ export function PhotoPlate({
   hideCaption = false,
   sizes = "100vw",
   priority = false,
-  uncapped = false,
   className = "",
 }: PhotoPlateProps) {
   const blur = src ? blurData[src] : undefined;
 
   return (
-    /* The cap sits on the figure, not the frame, so the caption stays aligned. */
-    <figure
-      className={`mx-auto ${className}`}
-      style={{ width: uncapped ? undefined : widthCap(ratio) }}
-    >
+    <figure className={className}>
       <div
         className="relative overflow-hidden bg-paper-sunk"
         style={{ aspectRatio: ratio }}
@@ -115,7 +83,7 @@ export function VideoPlate({
   className?: string;
 }) {
   return (
-    <figure className={`mx-auto ${className}`} style={{ width: widthCap(ratio) }}>
+    <figure className={className}>
       <div
         className="relative overflow-hidden bg-paper-sunk"
         style={{ aspectRatio: ratio }}
@@ -146,7 +114,13 @@ function PlateCaption({ caption, meta }: { caption: string; meta?: string }) {
 }
 
 /** Visible only for frames that have no photograph yet. */
-function PlaceholderMark({ ratio, caption }: { ratio: string; caption: string }) {
+function PlaceholderMark({
+  ratio,
+  caption,
+}: {
+  ratio: string;
+  caption: string;
+}) {
   return (
     <div className="absolute inset-0 flex items-center justify-center border border-line">
       <div

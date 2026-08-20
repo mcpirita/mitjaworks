@@ -50,14 +50,16 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="rise mt-10 md:mt-12" style={{ animationDelay: "0.55s" }}>
+        <div
+          className="rise mt-10 md:mt-12"
+          style={{ animationDelay: "0.55s" }}
+        >
           <PhotoPlate
             src={site.hero.frame.src}
             ratio={site.hero.frame.ratio}
             caption={site.hero.frame.caption}
             sizes="(min-width: 1600px) 1520px, 100vw"
             priority
-            uncapped
           />
         </div>
       </Shell>

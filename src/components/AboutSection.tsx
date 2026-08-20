@@ -16,7 +16,6 @@ export function AboutSection() {
               caption={site.about.portrait.caption}
               sizes="(min-width: 768px) 33vw, 100vw"
               hideCaption
-              uncapped
             />
             <p className="mt-6 text-lg font-medium tracking-tight">
               {site.about.signature}
