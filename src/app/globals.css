@@ -5,8 +5,13 @@
   --color-paper: #fbfaf8;
   --color-paper-sunk: #f4f2ee;
   --color-ink: #12110f;
-  --color-ink-soft: #6b6862;
-  --color-ink-faint: #a39e95;
+  /*
+   * Contrast on the paper ground, measured: ink 18:1, soft 8.9:1, faint 5.2:1.
+   * The previous soft/faint pair sat at 5.3:1 and 2.6:1 — the faint one carries
+   * every photo caption and did not clear any legibility threshold.
+   */
+  --color-ink-soft: #4a4742;
+  --color-ink-faint: #6f6a61;
   --color-line: #e6e2db;
 
   --font-sans: var(--font-geist-sans);
@@ -21,6 +26,15 @@
     scroll-behavior: smooth;
     /* Nav is fixed; keep anchor targets clear of it. */
     scroll-padding-top: 7rem;
+  }
+
+  :root {
+    /*
+     * Ceiling for a photo plate's height. Property photography is landscape, so
+     * without it a full-column frame outgrows a laptop screen and opens cut off
+     * by the fold. See widthCap() in PhotoPlate.tsx.
+     */
+    --plate-max-h: 60vh;
   }
 
   body {
@@ -52,7 +66,7 @@
 
   .text-label {
     font-family: var(--font-mono), monospace;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }

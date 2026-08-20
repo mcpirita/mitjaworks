@@ -1,5 +1,5 @@
 import { site } from "@/content/en";
-import { PhotoPlate, VideoPlate } from "./PhotoPlate";
+import { PhotoPlate, VideoPlate, widthCap } from "./PhotoPlate";
 import { Shell } from "./Shell";
 
 /**
@@ -10,9 +10,12 @@ export function AerialSection() {
   const { reel, frames, credit } = site.aerial;
 
   return (
-    <section id="aerial" className="mt-28 bg-ink py-24 text-paper md:mt-40 md:py-32">
+    <section
+      id="aerial"
+      className="mt-28 bg-ink py-24 text-paper md:mt-40 md:py-32"
+    >
       <Shell>
-        <div className="flex items-center gap-3 text-label text-paper/45">
+        <div className="flex items-center gap-3 text-label text-paper/60">
           <span>{site.aerial.index}</span>
           <span className="h-px w-8 bg-paper/20" />
           <span>{site.aerial.label}</span>
@@ -37,7 +40,10 @@ export function AerialSection() {
             } as React.CSSProperties
           }
         >
-          <div className="reveal mt-12 md:mt-16">
+          <div
+            className="reveal mx-auto mt-12 md:mt-16"
+            style={{ width: widthCap(reel.ratio) }}
+          >
             <VideoPlate
               src={reel.src}
               poster={reel.poster}
@@ -47,7 +53,10 @@ export function AerialSection() {
             />
           </div>
 
-          <div className="reveal mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div
+            className="reveal mx-auto mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2"
+            style={{ width: widthCap(reel.ratio) }}
+          >
             {frames.map((frame) => (
               <PhotoPlate
                 key={frame.src}
@@ -59,7 +68,12 @@ export function AerialSection() {
             ))}
           </div>
 
-          <p className="mt-6 text-label text-ink-faint">{credit}</p>
+          <p
+            className="mx-auto mt-6 text-label text-ink-faint"
+            style={{ width: widthCap(reel.ratio) }}
+          >
+            {credit}
+          </p>
         </div>
       </Shell>
     </section>

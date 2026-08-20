@@ -25,8 +25,8 @@ export const site = {
 
   hero: {
     label: "Tallinn · Estonia",
-    titleTop: "Commercial real estate,",
-    titleBottom: "architecture & aerial.",
+    titleTop: "Real estate photography",
+    titleBottom: "and aerial.",
     lede: "Exteriors, interiors and drone coverage of the whole property in a single visit.",
     delivery: "Edited photos in 2 working days",
     cta: "Start a project",

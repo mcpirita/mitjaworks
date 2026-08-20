@@ -4,7 +4,7 @@ import { Shell } from "./Shell";
 
 export function Hero() {
   return (
-    <section id="top" className="pt-32 md:pt-40">
+    <section id="top" className="pt-28 md:pt-32">
       <Shell>
         <p
           className="rise text-label text-ink-faint"
@@ -13,23 +13,27 @@ export function Hero() {
           {site.hero.label}
         </p>
 
-        <h1 className="mt-6 max-w-[18ch] text-display text-[clamp(2.75rem,8vw,7rem)] font-medium">
+        {/* Two lines held apart across the column: the second sits flush right. */}
+        <h1 className="mt-5 text-display text-[clamp(2.5rem,6.4vw,5.5rem)] font-medium">
           <span
             className="rise block text-ink-soft"
             style={{ animationDelay: "0.15s" }}
           >
             {site.hero.titleTop}
           </span>
-          <span className="rise block" style={{ animationDelay: "0.25s" }}>
+          <span
+            className="rise block md:text-right"
+            style={{ animationDelay: "0.25s" }}
+          >
             {site.hero.titleBottom}
           </span>
         </h1>
 
         <div
-          className="rise mt-10 flex flex-col gap-8 border-t border-line pt-8 md:flex-row md:items-end md:justify-between"
+          className="rise mt-8 flex flex-col gap-8 border-t border-line pt-6 md:flex-row md:items-end md:justify-between"
           style={{ animationDelay: "0.4s" }}
         >
-          <p className="max-w-[46ch] text-lg leading-relaxed text-ink-soft text-balance">
+          <p className="max-w-[46ch] text-lg md:text-xl leading-relaxed text-ink-soft text-balance">
             {site.hero.lede}
           </p>
 
@@ -46,13 +50,14 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="rise mt-12 md:mt-16" style={{ animationDelay: "0.55s" }}>
+        <div className="rise mt-10 md:mt-12" style={{ animationDelay: "0.55s" }}>
           <PhotoPlate
             src={site.hero.frame.src}
             ratio={site.hero.frame.ratio}
             caption={site.hero.frame.caption}
             sizes="(min-width: 1600px) 1520px, 100vw"
             priority
+            uncapped
           />
         </div>
       </Shell>
