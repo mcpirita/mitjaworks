@@ -6,12 +6,20 @@ import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
 import { SiteNav } from "@/components/SiteNav";
 import { WorkSection } from "@/components/WorkSection";
+import { site } from "@/content/en";
+
+const navLinks = [
+  { href: "#work", label: site.nav.work },
+  { href: "#aerial", label: site.nav.aerial },
+  { href: "#services", label: site.nav.services },
+  { href: "#about", label: site.nav.about },
+];
 
 export default function Home() {
   return (
     <>
       <GuideRules />
-      <SiteNav />
+      <SiteNav links={navLinks} brandHref="#top" contactHref="#contact" />
       <main className="relative z-10 flex-1">
         <Hero />
         <WorkSection />

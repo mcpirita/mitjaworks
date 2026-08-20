@@ -19,17 +19,30 @@ const channels = [
   },
 ];
 
-export function ContactSection() {
+type ContactCopy = {
+  index: string;
+  label: string;
+  title: string;
+  lede: string;
+};
+
+type ContactSectionProps = {
+  /** Heading copy. Defaults to the real-estate wording used on the home page. */
+  copy?: ContactCopy;
+};
+
+/** The channels and the footer are the same everywhere; only the heading moves. */
+export function ContactSection({ copy = site.contact }: ContactSectionProps) {
   return (
     <section id="contact" className="pt-28 pb-16 md:pt-40">
       <Shell>
-        <SectionMark index={site.contact.index} label={site.contact.label} />
+        <SectionMark index={copy.index} label={copy.label} />
 
         <h2 className="mt-6 text-display text-[clamp(2.25rem,6vw,5rem)] font-medium">
-          {site.contact.title}
+          {copy.title}
         </h2>
         <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-ink-soft text-balance">
-          {site.contact.lede}
+          {copy.lede}
         </p>
 
         {/* No form: an agency writes faster than it fills in fields. */}
