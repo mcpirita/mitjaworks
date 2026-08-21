@@ -29,9 +29,31 @@ export function Hero() {
           </span>
         </h1>
 
+        {/*
+          * The photograph follows the headline directly. It used to sit below
+          * the lede and the buttons, which spent about 200px before it and
+          * pushed it under the fold on a laptop — the site opened on a band of
+          * sky. What the frame gives up in reading order it wins back by being
+          * the first thing an agency actually sees.
+          */}
+        <div className="rise mt-8 md:mt-10" style={{ animationDelay: "0.4s" }}>
+          <PhotoPlate
+            src={site.hero.frame.src}
+            ratio={site.hero.frame.ratio}
+            caption={site.hero.frame.caption}
+            sizes="(min-width: 1600px) 1520px, 100vw"
+            priority
+          />
+        </div>
+
+        {/*
+          * Delivery time and single-visit coverage stay on the page: after the
+          * photographs themselves they are what an agency weighs first. Moved,
+          * not dropped.
+          */}
         <div
           className="rise mt-8 flex flex-col gap-8 border-t border-line pt-6 md:flex-row md:items-end md:justify-between"
-          style={{ animationDelay: "0.4s" }}
+          style={{ animationDelay: "0.55s" }}
         >
           <p className="max-w-[46ch] text-lg md:text-xl leading-relaxed text-ink-soft text-balance">
             {site.hero.lede}
@@ -48,19 +70,6 @@ export function Hero() {
               {site.hero.cta}
             </a>
           </div>
-        </div>
-
-        <div
-          className="rise mt-10 md:mt-12"
-          style={{ animationDelay: "0.55s" }}
-        >
-          <PhotoPlate
-            src={site.hero.frame.src}
-            ratio={site.hero.frame.ratio}
-            caption={site.hero.frame.caption}
-            sizes="(min-width: 1600px) 1520px, 100vw"
-            priority
-          />
         </div>
       </Shell>
     </section>
