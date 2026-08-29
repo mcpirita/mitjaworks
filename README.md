@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mitja Works
 
-## Getting Started
+My photography portfolio — commercial real estate, architecture, interiors and
+drone work in Tallinn. A single page, built to be sent rather than found.
 
-First, run the development server:
+That constraint shaped everything. The people who open it are real-estate
+agencies who already emailed me; they want to see the pictures and get to the
+contact form. So there is no blog, no SEO surface, no long "about me" — large
+photographs, a short services section, and a way to reach me from anywhere on
+the page.
+
+## Design decisions worth naming
+
+**Full-width plates, one or two per screen.** A tight thumbnail grid is the
+obvious choice and the wrong one: with twenty-odd photographs it reads as
+sparse and cheap. Big frames make a small archive look deliberate.
+
+**Loading is a feature, not an afterthought.** The page is opened on a phone,
+on mobile data, seconds after the link arrives. Every image ships with an
+inline base64 blur preview generated into
+[`src/content/blurData.ts`](src/content/blurData.ts), so a plate never flashes
+empty while it loads.
+
+**Copy is data.** All user-facing text lives in
+[`src/content/en.ts`](src/content/en.ts) as one typed object, kept separate
+from the image manifest. An Estonian version is a sibling `et.ts` implementing
+the same shape — a translation file, not a rewrite of the components.
+
+**A local-only image workaround.** The project sits on an exFAT volume, where
+macOS scatters AppleDouble `._` sidecar files into Next's image-optimizer
+cache; reads then fail and photographs render as broken icons with nothing
+wrong in the code. The optimizer is bypassed in development only — production
+builds and Vercel are untouched. The reasoning is in
+[`next.config.ts`](next.config.ts), because a bare `unoptimized: true` is
+exactly the sort of line someone deletes six months later.
+
+## Stack
+
+Next.js (App Router) · TypeScript · Tailwind CSS · `next/image` · Vercel
+
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+No environment variables — the site is fully static, photographs included.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Credits
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Photographs are mine, shot on assignment for **Restate**, and the case labels
+on the site say so. Site design and code are mine as well.
