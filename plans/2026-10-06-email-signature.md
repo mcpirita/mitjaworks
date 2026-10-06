@@ -20,3 +20,9 @@
 - [x] EN, веб-разработка → `email-signature/signature-web.html`: как фото-подпись, но Web development и GitHub (github.com/mcpirita) вместо портфолио
 - [x] Установить в Apple Mail: подпись «Mitja Web» добавлена вторым вариантом к hi@mitjaworks.com (новый .mailsignature + AllSignatures.plist + AccountsMap.plist, файл защищён uchg)
 - [x] Lumiera проверена в Outlook. «Mitja Web» в Apple Mail Дмитрий отдельно не проверял — если поедет, смотреть первым делом
+
+## Zireael Investments (добавлено 2026-10-06)
+
+- [x] EN, Zireael Investments OÜ → `email-signature/signature-zireael.html`: Owner & Managing Director, телефон, zireael.invest@gmail.com, Tallinn. Янтарный акцент #c8801a, кольцо вокруг портрета вшито в `dmitry-gubin-zireael.png`.
+- [x] Установлено в Apple Mail к zireael.invest@gmail.com, первой в списке; старая текстовая подпись оставлена второй
+- [ ] Тестовое письмо от Дмитрия
